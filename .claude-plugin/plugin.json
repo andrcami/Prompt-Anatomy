@@ -4,5 +4,6 @@
   "description": "Turns vague requests into strong prompts: asks targeted questions, builds a platform-tuned prompt, and recommends the right model.",
   "author": { "name": "andrcami" },
   "repository": "https://github.com/andrcami/prompt-anatomy",
+  "license": "MIT",
   "keywords": ["prompt-engineering", "prompts", "skills"]
 }

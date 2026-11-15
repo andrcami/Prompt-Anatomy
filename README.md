@@ -95,3 +95,7 @@ Test cases live in `skills/prompt-anatomy/evals/`. With Claude Code you can run 
 ```
 cd skills/prompt-anatomy && claude plugin eval .
 ```
+
+## License
+
+[MIT](LICENSE) © 2026 andrcami. You're free to use, modify and share this skill, including commercially, as long as the copyright and licence notice stays with every copy or modified version.

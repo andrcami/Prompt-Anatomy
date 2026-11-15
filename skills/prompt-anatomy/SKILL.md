@@ -1,5 +1,6 @@
 ---
 name: prompt-anatomy
+license: MIT
 description: Turns vague or underspecified requests into strong, well-structured prompts. It asks the user one short round of targeted questions (goal, context, specifics, constraints, output format, success criteria), assembles a refined prompt formatted for the user's AI platform, and recommends which model and mode to run it on (Claude, ChatGPT/OpenAI, Grok, Gemini, others). Use this skill whenever a request is broad or generic and missing details that would change the answer, such as "find me the prices of cars in Malta", "write me a marketing plan", "help with my CV" or "build me a website". Also use it whenever the user asks to write, improve, rewrite, review or "make better" a prompt, system prompt, custom GPT, Gem or custom instructions, or asks which AI model or mode they should use for a task. Skip it when the request is already specific, is a quick factual lookup, is casual chat, or the user says to just answer.
 ---
 
