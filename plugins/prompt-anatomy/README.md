@@ -58,6 +58,8 @@ Other platforms get generic tiers (top reasoning / default / fast). **Model name
 | Compare 2 models | Where more than one model is reachable | Only through a connected API tool |
 | Memory-aware questions | Skips what Claude already knows about you | Depends on the platform's memory |
 
+The skill folder also includes `agents/openai.yaml`, so it shows up with its name and icon in OpenAI's Codex app. Claude ignores that file.
+
 Running prompts on OpenAI, Grok or Gemini models happens only through a connected API tool, never through a browser unless you ask.
 
 ## License

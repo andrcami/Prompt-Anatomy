@@ -1,12 +1,12 @@
 ---
 name: "prompt-anatomy"
-description: "Turns underspecified requests into strong prompts: asks one short round of targeted questions, builds a refined prompt for the user's AI platform, and recommends a model and mode. Default to using it for any task request (asking to find, write, plan, build, compare, recommend or decide) that is missing two or more of: goal, context, specifics (place, budget, scope), constraints, or output format. This includes bare topics like \"boat purchase\" or \"car in Malta\", and longer requests that still omit key details. When unsure, use it. Also use when the user asks to write, improve or review a prompt, system prompt, custom GPT, Gem or custom instructions, or asks which AI model or mode to use. Skip only for single quick facts, casual chat, follow-ups where the conversation already supplies the context, or when the user says to just answer."
+description: "Turns underspecified requests into strong prompts: asks a few targeted questions (at most two short rounds), builds a refined prompt for the user's AI platform, and recommends a model and mode. Default to using it for any task request (asking to find, write, plan, build, compare, recommend or decide) that is missing two or more of: goal, context, specifics (place, budget, scope), constraints, or output format. This includes bare topics like \"boat purchase\" or \"car in Malta\", and longer requests that still omit key details. When unsure, use it. Also use when the user asks to write, improve or review a prompt, system prompt, custom GPT, Gem or custom instructions, or asks which AI model or mode to use. Skip only for single quick facts, casual chat, follow-ups where the conversation already supplies the context, or when the user says to just answer."
 license: MIT
 ---
 
 # Prompt Anatomy
 
-A vague request forces the model to guess, and guessing produces generic answers. "Find me the prices of cars in Malta" could mean a new family SUV under €30k, the resale value of the user's 2015 hatchback, or a market study for an import business. Each of those needs a different answer. One short round of good questions costs the user about thirty seconds and saves several rounds of wrong answers.
+A vague request forces the model to guess, and guessing produces generic answers. "Find me the prices of cars in Malta" could mean a new family SUV under €30k, the resale value of the user's 2015 hatchback, or a market study for an import business. Each of those needs a different answer. A few good questions cost the user about thirty seconds and saves several rounds of wrong answers.
 
 This skill does three things:
 
@@ -220,6 +220,9 @@ Put the prompt in a fenced code block so the user gets a one-click copy button a
 
 Always open the answer with a horizontal rule and a **Result** heading that names the model it ran on, e.g. **Result (Claude Sonnet 5.5)**. That keeps the prompt kit and the answer clearly separate.
 
+- **Follow the prompt's `<output_format>` exactly** (the same table columns, sections and order). The user agreed to that format at the checkpoint. If you deliberately deviate, for example because a column has no data, say so in one line.
+- **When you use a subagent, wait for it and post the result in the same reply.** Don't say "I'll post it when it finishes" and end your turn, because the user would have to prompt you again to see the answer.
+
 ## Improving an existing prompt
 
 When the user pastes a prompt and asks to improve or review it:
@@ -232,19 +235,16 @@ When the user pastes a prompt and asks to improve or review it:
 
 **User:** find me the prices of cars in Malta
 
-**You (Step 2):**
+**You (Step 2, round 1, using the question widget):**
 
-> To get you useful prices rather than a generic overview, a few quick questions. Answer with numbers/letters, or say "defaults":
->
-> 1. **Goal:** Are you a) buying, b) selling or valuing a car, c) researching the market? (default: a)
-> 2. **New or used?** a) new b) used c) both (default: c)
-> 3. **Budget and type:** price range, and any type or make? e.g. "under €20k, small SUV, Toyota/Kia" (default: any, grouped by type)
-> 4. **Must-haves:** fuel type (petrol/diesel/hybrid/EV), max age or mileage, automatic? (default: none)
-> 5. **Output:** a) table of specific listings with links, b) typical price ranges by model, c) both (default: c)
->
-> Skip any you don't care about.
+> 1. **Goal:** Buying (Recommended) · Selling or valuing · Market research
+> 2. **New or used?** Used (Recommended) · New · Both
+> 3. **Budget and type:** Under €15k, any type (Recommended) · €15–30k · Over €30k (or type your own)
+> 4. **Output:** Listings with links + typical price ranges (Recommended) · Listings only · Price ranges only
 
-**User:** buying, used, under 15k, automatic hatchback, defaults for the rest
+Without a question widget, ask the same four questions as a numbered list with a default for each, and add that they can reply "defaults" or skip any. If the answers leave something that would change the result (here, transmission and body type), ask a short round 2.
+
+**User (after round 2):** buying, used, under €15k, automatic hatchback, defaults for the rest
 
 **You (Step 5):** give a Claude-formatted prompt with `<context>`, `<task>`, `<requirements>` (search current Maltese listings such as dealer sites and classifieds, prices in EUR, include year, mileage, fuel and transmission, link and date seen, note whether imported cars include registration tax) and `<output_format>` (a table, then a 3-bullet summary of typical price ranges and value tips). Recommend Claude Sonnet with web search on (a single research question, so Sonnet is the right tier on the ladder), and Research mode for a deeper dealer-by-dealer comparison. Then ask the checkpoint question: run it here, adjust first, or just the prompt.
 

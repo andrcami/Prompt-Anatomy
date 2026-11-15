@@ -1,0 +1,7 @@
+# Metadata for OpenAI Codex / ChatGPT skills. Claude ignores this file.
+interface:
+  display_name: "Prompt Anatomy"
+  short_description: "Turn vague requests into strong, model-ready prompts"
+  icon_large: "./assets/icon.png"
+  brand_color: "#4F46E5"
+  default_prompt: "Use $prompt-anatomy to turn my request into a strong prompt and recommend the right model."

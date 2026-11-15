@@ -1,7 +1,7 @@
 {
   "name": "prompt-anatomy",
   "displayName": "Prompt Anatomy",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Turns vague requests into strong prompts: targeted questions, a platform-formatted prompt, a model recommendation, then runs it on confirmation.",
   "author": { "name": "andrcami" },
   "homepage": "https://github.com/andrcami/prompt-anatomy",

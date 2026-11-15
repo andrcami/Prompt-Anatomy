@@ -2,7 +2,7 @@
 
 Read this when formatting the final prompt for a platform (Step 3) or recommending a model (Step 4).
 
-> **Last reviewed: 2026-11-15.** Model line-ups change every few months. The Claude entries were checked against Anthropic's model overview on that date. The OpenAI, xAI and Google names come from general knowledge and are **examples of a tier**, not guaranteed to be current. Always recommend by tier first ("the top reasoning model"), give the example name, and tell the user to pick the newest model in that tier in their model picker. Never invent a model name.
+> **Last reviewed: 2026-11-15.** Model line-ups change every few months. The Claude entries were checked against Anthropic's model overview on that date. The OpenAI and xAI ladders were last researched on that date from public sources (see the notes under each table). The Google names come from general knowledge. All non-Claude names are **examples of a tier**, not guaranteed to be current. Always recommend by tier first ("the top reasoning model"), give the example name, and tell the user to pick the newest model in that tier in their model picker. Never invent a model name.
 
 ## Contents
 1. Claude (Anthropic)
@@ -70,13 +70,16 @@ All four have adaptive thinking and a 1M-token context. On the API, the **effort
 
 **Where reusable prompts go:** custom GPT instructions (about 8,000 characters), ChatGPT Custom Instructions (short boxes, about 1,500 characters each), Projects, or the `system`/`developer` message (API).
 
-**Model tiers** (examples as of last review; verify in the picker):
+**Model ladder** (same shape as the Claude ladder; pick the **lowest tier that does the job well**):
 
-| Tier | Example | Use for |
-|------|---------|---------|
-| Top reasoning | GPT-5-class "Thinking" / "Pro" | Hard reasoning, maths, complex code, strategy |
-| Default | GPT-5-class default / "Auto" | Everyday tasks |
-| Fast / cheap | "mini" / "nano" variants (API) | High volume, simple tasks |
+| Tier | What to pick in ChatGPT | In the API | Use for |
+|------|-------------------------|------------|---------|
+| Simple | The fast / "Instant" option | The current **mini** model (or **nano**, API-only, for bulk) | Lookups, summaries, short rewrites, classification, extraction |
+| **Default** | The default model ("Auto") | The current mid-tier "workhorse" model | Everyday writing, comparisons, single research questions (with Search on). **When in doubt, use this.** |
+| Complex | The "Thinking" / reasoning option | The current reasoning flagship | Multi-step work with linked decisions, maths, strategy, complex code |
+| Hardest | "Pro" (paid plans) or **Deep research** | The top flagship at high reasoning effort | The hardest problems, multi-source research reports |
+
+*Names (checked 2026-11-15, partly unverified):* OpenAI's own announcement confirms **GPT-5.4 mini** and **GPT-5.4 nano** (March 2026; nano is API-only). Third-party sites from November 2026 describe a newer **GPT-6** family with four tiers (flagship → workhorse → fast → cheapest), but OpenAI's own pages couldn't be checked from here. Recommend by tier, and name a model only if you're confident it's current. Otherwise tell the user to pick the newest model in that tier in ChatGPT's model picker.
 
 **Modes to mention:** Search (current facts and prices), Deep research (thorough multi-source reports), file uploads and data analysis (spreadsheets, PDFs), image generation.
 
@@ -91,13 +94,17 @@ All four have adaptive thinking and a 1M-token context. On the API, the **effort
 
 **Where reusable prompts go:** Custom Instructions (in settings), Projects, or the system message (API).
 
-**Model tiers** (examples as of last review; verify in the picker):
+**Model ladder** (same shape as the Claude ladder; pick the **lowest tier that does the job well**):
 
-| Tier | Example | Use for |
-|------|---------|---------|
-| Top reasoning | Grok 4-class (with "Think" or "Heavy") | Hard reasoning, analysis |
-| Fast | Grok "Fast" variants | Quick everyday answers |
-| Coding | Grok Code variants | Agentic coding |
+| Tier | What to pick in Grok | Use for |
+|------|----------------------|---------|
+| Simple | The "Fast" model, non-reasoning | Quick answers, short rewrites, high volume |
+| **Default** | The default model ("Auto") | Everyday writing, comparisons, single questions. Turn on **X search** for trends and sentiment. **When in doubt, use this.** |
+| Complex | The flagship with **Think** on | Multi-step reasoning, analysis, planning |
+| Hardest | The flagship in "Heavy" mode (top plans) or **DeepSearch / DeeperSearch** | The hardest problems, multi-source research |
+| (Coding) | The "Code" model | Agentic coding |
+
+*Names (checked 2026-11-15, unverified):* xAI's own posts confirm the **Grok 4.1 Fast** family (with reasoning and non-reasoning variants, Nov 2025). Third-party sources from November 2026 report newer models (Grok 4.3, 4.20 and 4.7) and the retirement of older Grok 4 models, but they disagree on which is the flagship, and xAI's docs couldn't be checked from here. Recommend by tier, and tell the user to pick the newest model in that tier.
 
 **Modes to mention:** DeepSearch / DeeperSearch (multi-source research), Think (reasoning), X search (social trends).
 

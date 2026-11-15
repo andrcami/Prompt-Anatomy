@@ -35,7 +35,7 @@ ChatGPT doesn't install Claude-style skills, so publish the skill as a **custom 
 3. Add conversation starters such as "Find me car prices in Malta", "Improve this prompt: …" and "Which model should I use for …?". Upload a profile picture (you can reuse `plugins/prompt-anatomy/.claude-plugin/icon.png`).
 4. **Share → GPT Store**, choose a category (Productivity), and publish. Store listings require a paid plan and are subject to OpenAI's usage policies and review.
 
-For coding agents, OpenAI Codex reads the same `SKILL.md` format, so people can copy `plugins/prompt-anatomy/skills/prompt-anatomy/` into `.agents/skills/` or `~/.codex/skills/`. OpenAI also keeps a public skills catalog on GitHub ([openai/skills](https://github.com/openai/skills)). Check its contribution guidelines to see whether it accepts community submissions.
+For coding agents, OpenAI Codex reads the same `SKILL.md` format, so people can copy `plugins/prompt-anatomy/skills/prompt-anatomy/` into `.agents/skills/` or `~/.codex/skills/`. The skill includes `agents/openai.yaml` (display name, short description, icon and default prompt for the Codex app). OpenAI also keeps a public skills catalog on GitHub ([openai/skills](https://github.com/openai/skills)). Check its contribution guidelines to see whether it accepts community submissions.
 
 ## 3. Grok
 
