@@ -39,50 +39,19 @@ portable/
   system-prompt.md             # Paste-in version for custom GPTs, Gems, Grok/Claude Projects (~4.7k chars)
   custom-instructions-short.txt# Under 1,500 chars, for ChatGPT/Grok custom-instruction boxes
 .claude-plugin/                # Makes this repo a Claude Code plugin marketplace
+INSTALL.md / PUBLISHING.md     # Install + store submission guides
 scripts/build.sh               # Builds dist/prompt-anatomy.zip + dist/portable/
 ```
 
 ## Installation
 
-Run `./scripts/build.sh` first to create `dist/prompt-anatomy.zip`.
+**Full step-by-step guide: [INSTALL.md](INSTALL.md)**
 
-### Claude (claude.ai, desktop and mobile apps)
-1. Make sure skills are enabled: **Settings → Capabilities** (the exact menu names can vary by plan and version).
-2. Upload `dist/prompt-anatomy.zip` under **Skills**.
-3. Optional but recommended: to make it kick in on *every* vague request, add this to your profile preferences or to a Project's instructions:
-   > Before answering broad or underspecified requests, use the prompt-anatomy skill to ask me clarifying questions first, unless I say "just answer".
+- **Claude (web, desktop, mobile):** Settings → Capabilities → Skills → upload `prompt-anatomy.zip`
+- **Claude Code:** `/plugin install prompt-anatomy --marketplace andrcami/prompt-anatomy`
+- **ChatGPT, Grok, Gemini:** paste [`portable/system-prompt.md`](portable/system-prompt.md) into a custom GPT, Project or Gem, or paste [`portable/custom-instructions-short.txt`](portable/custom-instructions-short.txt) into your custom instructions
 
-   Skills are triggered by the model's judgment. Simple-looking questions ("car prices in Malta") sometimes get answered directly without the skill, and this line makes the behavior consistent.
-
-### Claude Code
-Pick one of these:
-- **As a plugin:**
-  ```
-  /plugin marketplace add andrcami/prompt-anatomy
-  /plugin install prompt-anatomy@prompt-anatomy
-  ```
-- **As a personal skill:** `cp -r skills/prompt-anatomy ~/.claude/skills/`
-- **For one project:** `cp -r skills/prompt-anatomy .claude/skills/`
-
-Invoke it explicitly with `/prompt-anatomy`, or let it trigger automatically. For always-on behavior, add the line from step 3 above to your `CLAUDE.md`.
-
-### Other tools that support Agent Skills (`SKILL.md`)
-A growing number of coding agents read the same `SKILL.md` format (for example, OpenAI Codex reads `~/.codex/skills/`). Copy `skills/prompt-anatomy/` into that tool's skills folder. Check its docs for the exact path.
-
-### ChatGPT (OpenAI)
-- **Custom GPT (best):** Explore GPTs → Create → Configure → paste `portable/system-prompt.md` into **Instructions**. Turn on Web Search. You can also upload the `references/*.md` files as Knowledge.
-- **Project:** paste `portable/system-prompt.md` into the project instructions.
-- **Everywhere:** Settings → Personalization → Custom instructions → paste `portable/custom-instructions-short.txt`.
-
-### Grok (xAI)
-- **Project:** create a Project and paste `portable/system-prompt.md` as its instructions.
-- **Everywhere:** Settings → Customize / Custom Instructions → paste `portable/custom-instructions-short.txt`.
-
-### Gemini (Google)
-- **Gem:** Gems → New Gem → paste `portable/system-prompt.md` into the instructions. You can upload the reference files as knowledge.
-
-### Anything else (API system prompts, Copilot, Perplexity, local models)
-Use `portable/system-prompt.md` as the system prompt or custom instructions.
+Publishing to the stores and directories: see [PUBLISHING.md](PUBLISHING.md).
 
 ## Keeping model recommendations fresh
 

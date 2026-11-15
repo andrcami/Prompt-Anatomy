@@ -1,9 +1,12 @@
 {
   "name": "prompt-anatomy",
+  "displayName": "Prompt Anatomy",
   "version": "0.1.0",
   "description": "Turns vague requests into strong prompts: asks targeted questions, builds a platform-tuned prompt, and recommends the right model.",
   "author": { "name": "andrcami" },
+  "homepage": "https://github.com/andrcami/prompt-anatomy",
   "repository": "https://github.com/andrcami/prompt-anatomy",
   "license": "MIT",
+  "icon": "./.claude-plugin/icon.png",
   "keywords": ["prompt-engineering", "prompts", "skills"]
 }

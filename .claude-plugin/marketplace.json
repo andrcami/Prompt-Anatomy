@@ -1,6 +1,9 @@
 {
   "name": "prompt-anatomy",
-  "owner": { "name": "andrcami" },
+  "description": "Prompt Anatomy: turn vague requests into strong, platform-tuned prompts.",
+  "owner": {
+    "name": "andrcami"
+  },
   "plugins": [
     {
       "name": "prompt-anatomy",
