@@ -1,0 +1,11 @@
+{
+  "name": "prompt-anatomy",
+  "owner": { "name": "andrcami" },
+  "plugins": [
+    {
+      "name": "prompt-anatomy",
+      "source": "./",
+      "description": "Turns vague requests into strong prompts: asks targeted questions, builds a platform-tuned prompt, and recommends the right model."
+    }
+  ]
+}

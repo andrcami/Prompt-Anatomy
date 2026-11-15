@@ -1,0 +1,8 @@
+{
+  "name": "prompt-anatomy",
+  "version": "0.1.0",
+  "description": "Turns vague requests into strong prompts: asks targeted questions, builds a platform-tuned prompt, and recommends the right model.",
+  "author": { "name": "andrcami" },
+  "repository": "https://github.com/andrcami/prompt-anatomy",
+  "keywords": ["prompt-engineering", "prompts", "skills"]
+}

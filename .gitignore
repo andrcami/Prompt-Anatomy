@@ -1,0 +1,3 @@
+dist/
+*-workspace/
+.DS_Store

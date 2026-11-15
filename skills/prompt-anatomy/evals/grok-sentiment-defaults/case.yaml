@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: grok-sentiment-defaults
+expected_outcome: |
+  The response does not ask questions; it delivers a ready-to-copy Grok prompt that instructs searching recent X posts and the web within a time window, specifies an output format, recommends a Grok mode such as DeepSearch/X search, and lists the assumptions it made.

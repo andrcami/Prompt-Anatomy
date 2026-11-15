@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: specific-email-no-questions
+expected_outcome: |
+  The response writes the email directly without asking clarifying questions, because the request is already specific.
