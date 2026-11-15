@@ -55,7 +55,7 @@ Add whichever apply when you build the prompt:
 
 ## 3. Question banks by task type
 
-Pick 3–6 of the most relevant questions. Always offer choices and a default.
+Pick the most relevant questions: up to 4 in round 1, and up to 3 follow-ups in an optional round 2 (see SKILL.md Step 2). Always offer 2–4 choices, with the recommended default first.
 
 ### Research, shopping and price comparison
 - Buying, selling, or researching?
@@ -128,7 +128,7 @@ Pick 3–6 of the most relevant questions. Always offer choices and a default.
 
 ## 4. Choosing which questions to ask
 
-Rank the missing elements by **how much the answer would change** depending on the reply. Ask the top 3–6, and use defaults for the rest. Good tie-breakers:
+Rank the missing elements by **how much the answer would change** depending on the reply. Ask the top 4 in round 1, and use defaults for the rest. Good tie-breakers:
 
 1. Goal and decision (changes everything)
 2. Hard scope parameters (location, budget, dates, versions)
@@ -136,7 +136,7 @@ Rank the missing elements by **how much the answer would change** depending on t
 4. Constraints and sources
 5. Tone, audience and examples (often fine on a sensible default)
 
-If the user has answered once and gaps remain, use defaults and list them as assumptions. Don't start a second round of questions unless something critical is still unknown.
+After round 1, re-check the gaps. Ask a second round (up to 3 follow-ups, built from round 1's answers, each with a "Use defaults" choice) only if what's still missing would change the answer. Never go beyond 2 rounds or 7 questions in total. Anything still open becomes a default, listed as an assumption. If the user answered round 1 with "defaults", skip round 2.
 
 ---
 

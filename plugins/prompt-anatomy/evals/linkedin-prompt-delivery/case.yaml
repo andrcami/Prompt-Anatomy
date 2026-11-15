@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: linkedin-prompt-delivery
+expected_outcome: |
+  The response skips questions and delivers the prompt kit in the fixed order: prompt in a code block, a 'Run it on' line naming a model AND a mode, assumptions, then a checkpoint question (run it here / adjust / just the prompt). It does not write the post before the checkpoint.

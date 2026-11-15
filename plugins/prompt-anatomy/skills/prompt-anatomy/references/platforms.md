@@ -29,14 +29,16 @@ Read this when formatting the final prompt for a platform (Step 3) or recommendi
 
 **Where reusable prompts go:** Project instructions (claude.ai), custom Skills, `CLAUDE.md` (Claude Code), or the `system` parameter (API).
 
-**Models** (verified 2026-11-15):
+**Models: the ladder** (names verified 2026-11-15). This matches the ladder in SKILL.md Step 4. Pick the **lowest tier that does the job well**:
 
 | Tier | Model | Use for |
 |------|-------|---------|
-| Most capable | **Claude Fable 5.2** | Demanding reasoning, long-horizon agentic work, the hardest problems |
-| Recommended default | **Claude Opus 5.5** | Most work: long-running agentic coding and knowledge work. Anthropic's "start here" model |
-| Balanced / fast | **Claude Sonnet 5.5** | The best mix of speed and intelligence; everyday writing, analysis, coding |
-| Fastest / cheapest | **Claude Haiku 5.5** | High-volume, latency-sensitive work: classification, extraction, routing |
+| Simple | **Claude Haiku 5.5** | Simple, single-step, easy-to-check work: lookups, summaries, short rewrites, classification, extraction |
+| **Default** | **Claude Sonnet 5.5** | Everyday work: writing, comparisons, analysis, Q&A, a single research question with web search. **When in doubt, Sonnet.** |
+| Complex | **Claude Opus 5.5** | Genuinely complex, multi-step work with linked decisions and trade-offs, planning, deep analysis, non-trivial code |
+| Hardest | **Claude Fable 5.2** | The hardest open-ended work: deep multi-source research, long-running agentic tasks |
+
+*Where the default comes from:* Anthropic's API docs ("Models overview" on platform.claude.com) suggest starting with Opus 5.5 for most API workloads. The Claude Enterprise consumption guide on support.claude.com says "when in doubt, Sonnet" for chat use. This skill is mostly used in chat, so it follows the consumption guide: default to Sonnet, and step up only when you can name the extra complexity. Judge cost per finished task, not per token.
 
 All four have adaptive thinking and a 1M-token context. On the API, the **effort** setting trades depth for speed. **Modes to mention:** web search (for current facts and prices), Research (for multi-source reports), file upload or Projects (for long documents).
 
@@ -145,11 +147,11 @@ Write a compact descriptive prompt, not instructions:
 
 | Task | Tier | Mode | Why |
 |------|------|------|-----|
-| Current prices, listings, news | Default or balanced | **Web search on** (or Deep research for a full report) | Model memory is out of date; it needs live data |
+| Current prices, listings, news | Default / balanced (Claude Sonnet 5.5) | **Web search on** (or Deep research for a full report) | Model memory is out of date; it needs live data |
 | Market or competitor research report | Top reasoning | Deep research / Research | Many sources, synthesis |
 | Hard maths, logic, strategy | Top reasoning | Thinking on | Benefits from deliberate reasoning |
-| Complex coding / agentic coding | Top reasoning or recommended default (Claude Opus 5.5 / Fable 5.2) | Coding agent (Claude Code, Codex and others) | Long, multi-step work |
-| Everyday writing, emails, summaries | Balanced (Claude Sonnet 5.5, GPT default, Gemini Flash, Grok Fast) | Standard | Fast and good enough |
+| Complex coding / agentic coding | Complex or hardest tier (Claude Opus 5.5 / Fable 5.2) | Coding agent (Claude Code, Codex and others) | Long, multi-step work |
+| Everyday writing, emails, summaries | Default / balanced (Claude Sonnet 5.5, GPT default, Gemini Flash, Grok Fast) | Standard | Fast and good enough |
 | Long document or contract review | Top or balanced, with a large context | File upload / Projects | Needs the whole document in view |
 | Bulk classification or extraction (API) | Fastest (Claude Haiku 5.5, mini/nano, Flash-Lite) | Batch | Cheap and fast at scale |
 | Social trends, X sentiment | Grok | X search | Direct access to X data |

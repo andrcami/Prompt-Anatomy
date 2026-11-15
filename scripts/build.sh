@@ -5,6 +5,6 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 rm -rf dist && mkdir -p dist
-(cd skills && zip -qr ../dist/prompt-anatomy.zip prompt-anatomy -x 'prompt-anatomy/evals/*')
+(cd plugins/prompt-anatomy/skills && zip -qr ../../../dist/prompt-anatomy.zip prompt-anatomy)
 cp -R portable dist/portable
 echo "Built:"; ls -la dist dist/portable

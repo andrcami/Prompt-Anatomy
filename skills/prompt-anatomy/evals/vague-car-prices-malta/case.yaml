@@ -1,4 +1,0 @@
-schema_version: "1.1"
-name: vague-car-prices-malta
-expected_outcome: |
-  Instead of listing generic prices, the response asks one round of 3-6 task-specific clarifying questions (e.g. buying vs selling, new vs used, budget, type, output format), each with options or defaults, and lets the user reply with 'defaults'.

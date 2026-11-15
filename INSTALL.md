@@ -37,20 +37,16 @@ Claude decides when to use a skill, and it sometimes answers simple-looking ques
 
 Inside a session:
 ```
-/plugin install prompt-anatomy --marketplace andrcami/prompt-anatomy
-```
-Or in two steps (works in older versions):
-```
 /plugin marketplace add andrcami/prompt-anatomy
-/plugin install prompt-anatomy@prompt-anatomy
+/plugin install prompt-anatomy@andrcami-skills
 ```
-To get new versions, run `claude plugin update prompt-anatomy@prompt-anatomy`, or turn on auto-update for the marketplace in `/plugin`.
+The repo is a marketplace called `andrcami-skills`, so the install id is `prompt-anatomy@andrcami-skills`. To get new versions, run `claude plugin update prompt-anatomy@andrcami-skills`, or turn on auto-update for the marketplace in `/plugin`.
 
 **Without the plugin system:** copy the folder into your skills directory.
 ```bash
 git clone https://github.com/andrcami/prompt-anatomy
-cp -r prompt-anatomy/skills/prompt-anatomy ~/.claude/skills/        # all projects
-# or: cp -r prompt-anatomy/skills/prompt-anatomy .claude/skills/   # one project
+cp -r prompt-anatomy/plugins/prompt-anatomy/skills/prompt-anatomy ~/.claude/skills/       # all projects
+# or: cp -r prompt-anatomy/plugins/prompt-anatomy/skills/prompt-anatomy .claude/skills/  # one project
 ```
 
 **Use it:** type `/prompt-anatomy` (or `/prompt-anatomy:prompt-anatomy` when installed as a plugin), or just ask something vague and let it trigger. For always-on behavior, add the line from the Claude section above to your `CLAUDE.md`.
@@ -63,7 +59,7 @@ cp -r prompt-anatomy/skills/prompt-anatomy ~/.claude/skills/        # all projec
 1. Go to **Explore GPTs → Create → Configure**.
 2. Name: *Prompt Anatomy*. Paste the contents of [`portable/system-prompt.md`](portable/system-prompt.md) into **Instructions**.
 3. Under **Capabilities**, turn on **Web Search**.
-4. Optional: upload the files in `skills/prompt-anatomy/references/` as **Knowledge**.
+4. Optional: upload the files in `plugins/prompt-anatomy/skills/prompt-anatomy/references/` as **Knowledge**.
 5. Click **Create**, then choose who can see it: only you, anyone with the link, or the GPT Store.
 
 **Option B: in every chat**
@@ -92,7 +88,7 @@ Create a Project and paste `portable/system-prompt.md` into its instructions.
 
 ## Other tools
 
-- **Tools that read `SKILL.md` skills** (for example, OpenAI Codex, which reads `~/.codex/skills/`, and other agents that support the Agent Skills format): copy `skills/prompt-anatomy/` into that tool's skills folder.
+- **Tools that read `SKILL.md` skills** (OpenAI Codex, and other agents that support the open Agent Skills format): copy `plugins/prompt-anatomy/skills/prompt-anatomy/` into that tool's skills folder (Codex: `.agents/skills/` or `~/.codex/skills/`).
 - **Anything with a system prompt or custom instructions** (APIs, Copilot, Perplexity Spaces, local models): use `portable/system-prompt.md`.
 
 ---
@@ -100,5 +96,5 @@ Create a Project and paste `portable/system-prompt.md` into its instructions.
 ## Uninstall
 
 - **Claude:** Settings → Capabilities → Skills → remove it.
-- **Claude Code:** `claude plugin uninstall prompt-anatomy@prompt-anatomy`, or delete `~/.claude/skills/prompt-anatomy`.
+- **Claude Code:** `claude plugin uninstall prompt-anatomy@andrcami-skills`, or delete `~/.claude/skills/prompt-anatomy`.
 - **ChatGPT, Grok and Gemini:** delete the GPT, Project or Gem, or clear the custom instructions.

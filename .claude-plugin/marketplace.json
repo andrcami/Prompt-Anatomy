@@ -1,14 +1,12 @@
 {
-  "name": "prompt-anatomy",
-  "description": "Prompt Anatomy: turn vague requests into strong, platform-tuned prompts.",
-  "owner": {
-    "name": "andrcami"
-  },
+  "name": "andrcami-skills",
+  "description": "Skills and plugins by andrcami, starting with Prompt Anatomy: turn vague requests into strong, platform-tuned prompts.",
+  "owner": { "name": "andrcami" },
   "plugins": [
     {
       "name": "prompt-anatomy",
-      "source": "./",
-      "description": "Turns vague requests into strong prompts: asks targeted questions, builds a platform-tuned prompt, and recommends the right model."
+      "source": "./plugins/prompt-anatomy",
+      "description": "Turns vague requests into strong prompts: targeted questions, a platform-formatted prompt, a model recommendation, then runs it on confirmation."
     }
   ]
 }

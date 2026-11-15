@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: vague-car-prices-malta
+expected_outcome: |
+  Instead of listing generic prices, the response asks a first round of at most 4 task-specific questions (e.g. buying vs selling, new vs used, budget, output), each with 2-4 choices and the recommended default first, using the question widget when one exists.

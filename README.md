@@ -2,11 +2,11 @@
 
 A skill that turns vague requests into strong prompts.
 
-Suppose you ask an AI something broad like *"find me the prices of cars in Malta"*. Prompt Anatomy steps in with **one short round of targeted questions**: buying or selling? new or used? budget? what format? Each question comes with choices and a default, so you can answer in seconds. It then gives you:
+Suppose you ask an AI something broad like *"find me the prices of cars in Malta"*. Prompt Anatomy steps in with **a few targeted questions** (at most two short rounds): buying or selling? new or used? budget? what format? Each question comes with choices and a recommended default, so you can answer in seconds. It then gives you:
 
 1. **A refined, well-structured prompt** formatted for the AI you're using (Claude, ChatGPT, Grok, Gemini and others)
-2. **A model and mode recommendation** (for example, "turn web search on, because prices change daily")
-3. **The assumptions it made**, plus an offer to run the prompt straight away
+2. **A named model and mode** (for example, "Claude Sonnet 5.5 + web search, because prices change daily")
+3. **The assumptions it made**, then a checkpoint: run it here, run it on the recommended model, compare two models, adjust first, or just take the prompt
 
 It also reviews and rewrites prompts you already have, and it stays out of the way when your request is already specific or you say "just answer".
 
@@ -28,19 +28,22 @@ It's built on the published guidance from [Anthropic](https://platform.claude.co
 ## Repository layout
 
 ```
-skills/prompt-anatomy/         # The skill (Agent Skills format: SKILL.md + references)
-  SKILL.md                     # Core workflow
-  references/anatomy.md        # Deep guide + question banks by task type
-  references/platforms.md      # Formatting + model tiers per platform
-  references/frameworks.md     # APE, RACE, CO-STAR, RISEN, CRISPE, ...
-  references/examples.md       # Before/after examples
-  evals/                       # Test cases
+.claude-plugin/marketplace.json      # The "andrcami-skills" marketplace (lists the plugins below)
+plugins/prompt-anatomy/              # The Claude Code / Claude plugin
+  .claude-plugin/plugin.json         # Plugin manifest (+ icon.png)
+  README.md                          # What it does, model-ladder sources, what's Claude-only
+  skills/prompt-anatomy/             # The skill itself (Agent Skills format)
+    SKILL.md                         # Core workflow
+    references/anatomy.md            # Deep guide + question banks by task type
+    references/platforms.md          # Formatting + model ladder/tiers per platform
+    references/frameworks.md         # APE, RACE, CO-STAR, RISEN, CRISPE, ...
+    references/examples.md           # Before/after examples
+  evals/                             # Test cases (claude plugin eval)
 portable/
-  system-prompt.md             # Paste-in version for custom GPTs, Gems, Grok/Claude Projects (~4.7k chars)
-  custom-instructions-short.txt# Under 1,500 chars, for ChatGPT/Grok custom-instruction boxes
-.claude-plugin/                # Makes this repo a Claude Code plugin marketplace
-INSTALL.md / PUBLISHING.md     # Install + store submission guides
-scripts/build.sh               # Builds dist/prompt-anatomy.zip + dist/portable/
+  system-prompt.md                   # Paste-in version for custom GPTs, Gems, Grok/Claude Projects
+  custom-instructions-short.txt      # Under 1,500 chars, for custom-instruction boxes
+INSTALL.md / PUBLISHING.md           # Install + store submission guides
+scripts/build.sh                     # Builds dist/prompt-anatomy.zip + dist/portable/
 ```
 
 ## Installation
@@ -48,21 +51,23 @@ scripts/build.sh               # Builds dist/prompt-anatomy.zip + dist/portable/
 **Full step-by-step guide: [INSTALL.md](INSTALL.md)**
 
 - **Claude (web, desktop, mobile):** Settings → Capabilities → Skills → upload `prompt-anatomy.zip`
-- **Claude Code:** `/plugin install prompt-anatomy --marketplace andrcami/prompt-anatomy`
+- **Claude Code:** `/plugin marketplace add andrcami/prompt-anatomy`, then `/plugin install prompt-anatomy@andrcami-skills`
 - **ChatGPT, Grok, Gemini:** paste [`portable/system-prompt.md`](portable/system-prompt.md) into a custom GPT, Project or Gem, or paste [`portable/custom-instructions-short.txt`](portable/custom-instructions-short.txt) into your custom instructions
 
 Publishing to the stores and directories: see [PUBLISHING.md](PUBLISHING.md).
 
 ## Keeping model recommendations fresh
 
-Model line-ups change every few months. `references/platforms.md` recommends by **tier** (top reasoning / default / fast) and carries a "last reviewed" date. When a provider ships new models, update the tables there and the date.
+On Claude, the skill follows a model ladder based on Anthropic's own guidance (the Claude Enterprise consumption guide on support.claude.com, and "Choosing a model" on platform.claude.com): Haiku for simple work, **Sonnet by default**, Opus for multi-step work with linked decisions, Fable for the hardest. On other platforms it recommends by tier (top reasoning / default / fast).
+
+Model names change every few months, so pick the newest model in each tier. `references/platforms.md` carries a "last reviewed" date. When a provider ships new models, update the tables there and the date.
 
 ## Testing
 
-Test cases live in `skills/prompt-anatomy/evals/`. With Claude Code you can run them:
+Test cases live in `plugins/prompt-anatomy/evals/`. With Claude Code you can run them:
 
 ```
-cd skills/prompt-anatomy && claude plugin eval .
+claude plugin eval plugins/prompt-anatomy
 ```
 
 ## License

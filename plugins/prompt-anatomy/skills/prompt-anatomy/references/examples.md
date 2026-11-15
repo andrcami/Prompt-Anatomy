@@ -1,6 +1,6 @@
 # Worked Examples
 
-Before/after examples showing the full flow. Use them to calibrate how many questions to ask, how specific they should be, and what the delivered prompt looks like on each platform.
+Before/after examples showing the full flow. Use them to calibrate how many questions to ask, how specific they should be, and what the delivered prompt looks like on each platform. They follow SKILL.md: at most two rounds of questions, a model plus a mode, a checkpoint before running, and a labelled **Result (model)**.
 
 ---
 
@@ -8,16 +8,17 @@ Before/after examples showing the full flow. Use them to calibrate how many ques
 
 **User:** find me the prices of cars in Malta
 
-**Questions:**
-> To get you useful prices rather than a generic overview, a few quick questions. Answer with numbers/letters, or say "defaults":
+**Round 1 questions** (asked with the question widget, 4 at most, recommended choice first):
+> 1. **Goal:** Buying (Recommended) · Selling or valuing · Market research
+> 2. **New or used?** Used (Recommended) · New · Both
+> 3. **Budget and type:** Under €15k, any type (Recommended) · €15–30k · Over €30k · *(or type your own, e.g. "under €20k, small SUV")*
+> 4. **Output:** Listings with links + typical price ranges (Recommended) · Listings only · Price ranges only
 >
-> 1. **Goal:** a) buying b) selling or valuing c) market research (default: a)
-> 2. **New or used?** a) new b) used c) both (default: c)
-> 3. **Budget and type:** e.g. "under €20k, small SUV" (default: any, grouped by type)
-> 4. **Must-haves:** fuel (petrol/diesel/hybrid/EV), automatic, max age or mileage? (default: none)
-> 5. **Output:** a) specific listings with links b) typical price ranges by model c) both (default: c)
+> Without a question widget, ask the same questions as a numbered list with a default for each, and say the user can reply "defaults".
 
-**User:** buying, used, under 15k, automatic hatchback, defaults for the rest
+Re-check: transmission and body type would still change the answer, so a short round 2 is worth it (each follow-up includes "Use defaults"). If the user had answered "defaults", skip straight to delivery.
+
+**User (after both rounds):** buying, used, under €15k, automatic hatchback, defaults for the rest
 
 **Delivered:**
 
@@ -48,12 +49,24 @@ Find current listings and typical prices for used automatic hatchbacks in Malta 
 </output_format>
 ```
 
-**Run it on:** Claude Opus 5.5 (or Sonnet 5.5 for speed) with **web search on**, because prices change daily and model memory is out of date.
+**Run it on:** Claude Sonnet 5.5 + **web search** — a single research question, so Sonnet is the right tier on the ladder; prices change daily, so search must be on.
+**Go deeper:** Research mode for a dealer-by-dealer comparison. Don't use a model without search, because the prices would be stale.
 
-**Assumptions:** personal use, any fuel type, no maximum mileage.
+**Assumptions I made:** personal use, any fuel type, no maximum mileage.
 
-Want me to run it now?
+How do you want to continue? Run it here (Recommended) · Adjust first · Just the prompt
 ````
+
+**User:** Run it here
+
+**Result** (the answer always opens with a rule and a labelled heading, and follows the prompt's `<output_format>` exactly):
+
+```
+---
+**Result (Claude Sonnet 5.5)**
+
+| # | Make/model | Year | Mileage | ... |
+```
 
 ---
 
@@ -80,7 +93,9 @@ Mention: thanks to my Beta Retail team; I'll be working on supply-chain forecast
 
 Give me 2 variations so I can choose.
 ```
-**Run it on:** ChatGPT's default model. Writing doesn't need a reasoning model.
+**Run it on:** ChatGPT's default model + default chat. Writing doesn't need a reasoning model or search.
+
+Then the checkpoint: Run it here (here = this conversation, if it's ChatGPT) · Adjust first · Just the prompt. When the prompt is meant for another platform, "Just the prompt" is the natural choice. Offer to run it here only if the current assistant can do the task as well.
 
 ---
 

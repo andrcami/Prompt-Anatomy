@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: vat-rate-no-fire
+expected_outcome: |
+  A single quick fact: the response answers directly (18%) without clarifying questions, a prompt kit or a model recommendation.

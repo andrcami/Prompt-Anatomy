@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: boat-purchase-fires
+expected_outcome: |
+  A bare 2-word topic still triggers the skill: the response asks a first round of at most 4 boat-specific questions with choices, and does not give a generic buying guide.
