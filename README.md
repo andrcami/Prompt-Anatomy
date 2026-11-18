@@ -80,6 +80,10 @@ Test cases live in `plugins/prompt-anatomy/evals/`. With Claude Code you can run
 claude plugin eval plugins/prompt-anatomy
 ```
 
+## Privacy
+
+The skill collects, stores and sends no data. See [plugins/prompt-anatomy/PRIVACY.md](plugins/prompt-anatomy/PRIVACY.md).
+
 ## License
 
 [MIT](LICENSE) © 2026 andrcami. You're free to use, modify and share this skill, including commercially, as long as the copyright and licence notice stays with every copy or modified version.

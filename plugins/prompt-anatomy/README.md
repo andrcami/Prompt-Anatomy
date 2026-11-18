@@ -66,6 +66,10 @@ The skill folder also includes `agents/openai.yaml`, so it shows up with its nam
 
 Running prompts on OpenAI, Grok or Gemini models happens only through a connected API tool, never through a browser unless you ask.
 
+## Privacy
+
+Prompt Anatomy is instructions only: no code, connectors or servers. It collects, stores and sends no data. See [PRIVACY.md](PRIVACY.md).
+
 ## License
 
 MIT © 2026 andrcami. See [LICENSE](LICENSE).
