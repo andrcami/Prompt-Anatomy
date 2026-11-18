@@ -1,7 +1,11 @@
 ---
 name: "prompt-anatomy"
-description: "Turns underspecified requests into strong prompts: asks a few targeted questions (at most two short rounds), builds a refined prompt for the user's AI platform, and recommends a model and mode. Default to using it for any task request (asking to find, write, plan, build, compare, recommend or decide) that is missing two or more of: goal, context, specifics (place, budget, scope), constraints, or output format. This includes bare topics like \"boat purchase\" or \"car in Malta\", and longer requests that still omit key details. When unsure, use it. Also use when the user asks to write, improve or review a prompt, system prompt, custom GPT, Gem or custom instructions, or asks which AI model or mode to use. Skip only for single quick facts, casual chat, follow-ups where the conversation already supplies the context, or when the user says to just answer."
+description: "Turns underspecified requests into strong prompts: asks a few targeted questions (at most two short rounds), builds a refined prompt for the user's AI platform, and recommends a model and mode. Default to using it for any task request (asking to find, write, plan, build, compare, recommend or decide) that is missing two or more of: goal, context, specifics (place, budget, scope), constraints, or output format. This includes bare topics like 'boat purchase' or 'car in Malta', and longer requests that still omit key details. When unsure, use it. Always use it when the user asks for a prompt ('make me a prompt for…') or to write, improve or review a prompt, system prompt, custom GPT, Gem or custom instructions, even if they say to skip the questions (then build it from defaults), or asks which AI model or mode to use. Skip only for single quick facts, casual chat, follow-ups where the conversation already supplies the context, or when the user says to just answer the question."
 license: MIT
+metadata:
+  author: andrcami
+  version: "1.1.0"
+  tags: [prompt-engineering, prompts, model-selection, productivity]
 ---
 
 # Prompt Anatomy
@@ -84,7 +88,7 @@ Two things shape the final prompt:
 
 Ask in rounds, not all at once. Round 1's answers often change what's worth asking next. A boat for day trips needs different follow-ups from one for crossings to Sicily. But keep it short, because an interrogation is tiring.
 
-1. **Round 1: up to 4 questions.** Ask the ones whose answers change the result most (usually goal, specifics and output).
+1. **Round 1: up to 4 questions.** Ask the ones whose answers change the result most (usually goal, specifics and output). Count every numbered item, including an "Output" item that only states a default. Ask one thing per question, and don't merge two questions into one to fit more in. If a 5th thing matters, ask it in round 2 or state it as a default in one line under the list.
 2. **Re-check.** Run Gate 2 again on the original request plus the answers. If what's still missing wouldn't change the answer much, go to Step 3.
 3. **Round 2: only if needed, up to 3 questions.** Build each follow-up from round 1's answers, never a leftover from a fixed list. Each question includes a "Use defaults" choice so the user can skip it.
 4. **Hard stop: 2 rounds and 7 questions in total.** Never start a third round. Anything still open becomes a sensible default, listed under "Assumptions I made" in Step 5.
@@ -228,8 +232,9 @@ Always open the answer with a horizontal rule and a **Result** heading that name
 When the user pastes a prompt and asks to improve or review it:
 
 1. Check it against the anatomy, and list the 2–4 most important gaps or problems in plain words. Common problems: vague goal, no format, conflicting instructions, missing context, all-caps "NEVER/ALWAYS" with no reason given, examples that are all alike.
-2. Ask about the gaps only if you can't sensibly fill them yourself.
-3. Give the rewritten prompt, and briefly note what changed and why.
+2. **Rewrite straight away. Don't stop to ask.** Put details only the user knows (business name, products, audience) into `[placeholders]` with a short example, e.g. `[what you sell, e.g. sourdough and pastries]`. Ask a question only if the answer would change the *structure* of the prompt, and even then give the draft rewrite first.
+3. Give the rewritten prompt in a code block, formatted for the platform it will run on (e.g. Markdown or `###` sections for ChatGPT), and briefly note what changed and why.
+4. Finish as in Step 5: the **Run it on** line (model + mode for that platform), the assumptions, and the checkpoint.
 
 ## Worked example (short)
 

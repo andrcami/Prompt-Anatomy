@@ -1,0 +1,63 @@
+name: Validate
+
+# Runs every release check (see scripts/validate.sh) and uploads the report.
+# Also called by release.yml, so a release is only published if this passes.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      run_evals:
+        description: "Also run live evals (needs the ANTHROPIC_API_KEY secret; billed)"
+        type: boolean
+        default: false
+  workflow_call:
+    inputs:
+      run_evals:
+        type: boolean
+        default: false
+    secrets:
+      ANTHROPIC_API_KEY:
+        required: false
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install tools (pinned)
+        run: |
+          npm install -g @anthropic-ai/claude-code@2.1.327
+          pip install skillevaluator==1.0.1 uv
+
+      - name: Run checks
+        env:
+          VALIDATION_RUNNER: "GitHub Actions, run ${{ github.run_id }}"
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          # Live evals only when asked for and a key exists; otherwise attach the last committed eval run.
+          RUN_EVALS: ${{ (inputs.run_evals && secrets.ANTHROPIC_API_KEY != '') && '1' || '0' }}
+          EVALS_JSON: validation/evals/latest.json
+        run: ./scripts/validate.sh validation-report
+
+      - name: Show the summary
+        if: always()
+        run: cat validation-report/SUMMARY.md >> "$GITHUB_STEP_SUMMARY" || true
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: validation-report
+          path: validation-report

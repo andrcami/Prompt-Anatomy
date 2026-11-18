@@ -1,6 +1,9 @@
 name: Release
 
-# Pushing a tag like v1.1.0 builds the skill zip and publishes a GitHub Release.
+# Pushing a tag like v1.1.0:
+#   1. runs the full validation (validate.yml); the release stops if it fails,
+#   2. builds dist/prompt-anatomy.zip and publishes a GitHub Release with the zip and the validation report,
+#   3. commits the validation report to main under validation/<tag>/ as a permanent record.
 on:
   push:
     tags: ["v*"]
@@ -9,7 +12,14 @@ permissions:
   contents: write
 
 jobs:
+  validate:
+    uses: ./.github/workflows/validate.yml
+    with:
+      run_evals: true
+    secrets: inherit
+
   release:
+    needs: validate
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -21,8 +31,16 @@ jobs:
             echo "Tag $GITHUB_REF_NAME does not match plugin.json version ($want)"; exit 1
           fi
 
+      - uses: actions/download-artifact@v4
+        with:
+          name: validation-report
+          path: validation-report
+
       - name: Build
-        run: ./scripts/build.sh
+        run: |
+          ./scripts/build.sh
+          (cd validation-report && zip -qr ../dist/validation-report.zip .)
+          cp validation-report/SUMMARY.md dist/validation-summary.md
 
       - name: Publish the release
         env:
@@ -30,5 +48,16 @@ jobs:
         run: |
           notes=".github/release-notes/${GITHUB_REF_NAME}.md"
           if [ -f "$notes" ]; then set -- --notes-file "$notes"; else set -- --generate-notes; fi
-          gh release create "$GITHUB_REF_NAME" dist/prompt-anatomy.zip \
+          gh release create "$GITHUB_REF_NAME" dist/prompt-anatomy.zip dist/validation-report.zip dist/validation-summary.md \
             --title "Prompt Anatomy $GITHUB_REF_NAME" "$@"
+
+      - name: Commit the validation report to main
+        run: |
+          git fetch origin main && git checkout -B main origin/main
+          rm -rf "validation/$GITHUB_REF_NAME" && mkdir -p "validation/$GITHUB_REF_NAME"
+          cp -R validation-report/. "validation/$GITHUB_REF_NAME/"
+          cp "validation/$GITHUB_REF_NAME/status.json" validation/latest-status.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git add validation
+          git commit -m "Validation report for $GITHUB_REF_NAME" && git push origin main || echo "Nothing to commit"

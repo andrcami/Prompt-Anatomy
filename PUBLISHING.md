@@ -5,9 +5,9 @@ How to list this skill in each platform's store or directory. Checked 2026-11-15
 ## Before every release
 
 - [ ] Bump `version` in `plugins/prompt-anatomy/.claude-plugin/plugin.json`. Users who already installed it only get the update if the version changes.
-- [ ] `claude plugin validate . --strict` (marketplace) and `claude plugin validate plugins/prompt-anatomy --strict --profile directory` (plugin) both pass.
-- [ ] `./scripts/build.sh` passes, and you've attached `dist/prompt-anatomy.zip` to a GitHub Release.
-- [ ] Optional: `claude plugin eval plugins/prompt-anatomy` to re-run the test cases.
+- [ ] Run the live evals locally: `claude plugin eval plugins/prompt-anatomy --trust-plugin --json eval.json`. All cases should pass. Then save a slimmed copy as `validation/evals/latest.json` (or add an `ANTHROPIC_API_KEY` repo secret, and the release runs the evals in CI).
+- [ ] `./scripts/validate.sh validation/local` passes. It runs both `claude plugin validate` checks, the build and NVIDIA SkillEvaluator Tier 1, and needs `pip install skillevaluator==1.0.1`.
+- [ ] Add release notes at `.github/release-notes/v<version>.md`, then push the tag: `git tag v<version> && git push origin v<version>`. The [Release workflow](.github/workflows/release.yml) validates again, publishes the GitHub Release (zip + validation report), and commits the report to `validation/v<version>/`.
 
 ## 1. Claude: Anthropic's Directory (claude.ai, Cowork and Claude Code)
 

@@ -1,5 +1,7 @@
 # Prompt Anatomy
 
+[![Validate](https://github.com/andrcami/prompt-anatomy/actions/workflows/validate.yml/badge.svg)](https://github.com/andrcami/prompt-anatomy/actions/workflows/validate.yml) [![Latest release](https://img.shields.io/github/v/release/andrcami/prompt-anatomy)](https://github.com/andrcami/prompt-anatomy/releases/latest) [![Validation report](https://img.shields.io/badge/validation-report-blue)](validation/) [![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+
 A skill that turns vague requests into strong prompts.
 
 Suppose you ask an AI something broad like *"find me the prices of cars in Malta"*. Prompt Anatomy steps in with **a few targeted questions** (at most two short rounds): buying or selling? new or used? budget? what format? Each question comes with choices and a recommended default, so you can answer in seconds. It then gives you:
@@ -44,6 +46,9 @@ portable/
   custom-instructions-short.txt      # Under 1,500 chars, for custom-instruction boxes
 INSTALL.md / PUBLISHING.md           # Install + store submission guides
 scripts/build.sh                     # Builds dist/prompt-anatomy.zip + dist/portable/
+scripts/validate.sh                  # Runs every release check and writes a report
+validation/                          # Validation reports for each release
+.github/workflows/                   # Validate on every push; Release on v* tags
 ```
 
 ## Installation
