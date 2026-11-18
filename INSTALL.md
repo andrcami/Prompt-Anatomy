@@ -7,7 +7,7 @@ Prompt Anatomy is a **skill**, not a connector. Connectors link an AI to outside
 | [Claude (web, desktop, mobile)](#claude-web-desktop-and-mobile) | Upload the skill (or add it from the Directory once listed) | 1 min |
 | [Claude Code](#claude-code) | One command | 1 min |
 | [ChatGPT](#chatgpt) | Custom GPT or Custom Instructions | 3 min |
-| [Grok](#grok) | Project or Custom Instructions | 2 min |
+| [Grok](#grok) | Upload the skill (Settings → Skills), or a Project | 2 min |
 | [Gemini](#gemini) | A Gem | 2 min |
 | [Other tools](#other-tools) | System prompt / skills folder | 2 min |
 
@@ -72,6 +72,12 @@ Create a Project and paste `portable/system-prompt.md` into its instructions.
 
 ## Grok
 
+**Option A: as a skill (recommended, tested and works like on Claude)**
+1. On grok.com, open **Settings → Skills** and click **New Skill**.
+2. Upload `prompt-anatomy.zip`. If Grok shows a form instead, use **name** `prompt-anatomy`, paste the `description` line from the top of `SKILL.md` as the description, and paste the rest of `SKILL.md` as the instructions.
+3. Start a new chat and try "boat purchase". It should ask a few questions first.
+
+**Option B: without Skills**
 - **A Project:** create a Project and paste [`portable/system-prompt.md`](portable/system-prompt.md) into its instructions.
 - **Every chat:** **Settings → Customize / Custom Instructions** → paste [`portable/custom-instructions-short.txt`](portable/custom-instructions-short.txt).
 

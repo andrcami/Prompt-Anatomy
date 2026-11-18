@@ -32,7 +32,11 @@ More examples are in [`skills/prompt-anatomy/references/examples.md`](skills/pro
 /plugin install prompt-anatomy@andrcami-skills
 ```
 
-**Claude (web, desktop and mobile):** upload the skill zip under Settings → Capabilities → Skills. See the [full install guide](../../INSTALL.md), which also covers ChatGPT, Grok and Gemini.
+**Claude (web, desktop and mobile):** upload the skill zip under Settings → Capabilities → Skills. 
+
+**Grok:** Settings → Skills → New Skill → upload the same zip. It works the same as on Claude.
+
+See the [full install guide](../../INSTALL.md), which also covers ChatGPT and Gemini.
 
 ## Where the model advice comes from
 
@@ -51,7 +55,7 @@ Other platforms get generic tiers (top reasoning / default / fast). **Model name
 
 ## What works where
 
-| Feature | Claude | Other platforms (ChatGPT, Codex, Grok, Gemini) |
+| Feature | Claude | Other platforms (Grok, ChatGPT, Codex, Gemini) |
 |---------|--------|-----------------------------------------------|
 | Question widget | Uses the built-in question tool | Falls back to a numbered list with defaults |
 | "Run on [model]" | Runs on another Claude tier through a subagent, where the session supports it | Not offered. "Run it here" or "Just the prompt" instead |

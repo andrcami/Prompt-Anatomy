@@ -52,7 +52,8 @@ scripts/build.sh                     # Builds dist/prompt-anatomy.zip + dist/por
 
 - **Claude (web, desktop, mobile):** Settings → Capabilities → Skills → upload `prompt-anatomy.zip`
 - **Claude Code:** `/plugin marketplace add andrcami/prompt-anatomy`, then `/plugin install prompt-anatomy@andrcami-skills`
-- **ChatGPT, Grok, Gemini:** paste [`portable/system-prompt.md`](portable/system-prompt.md) into a custom GPT, Project or Gem, or paste [`portable/custom-instructions-short.txt`](portable/custom-instructions-short.txt) into your custom instructions
+- **Grok:** Settings → Skills → New Skill → upload `prompt-anatomy.zip` (same skill as Claude)
+- **ChatGPT, Gemini:** paste [`portable/system-prompt.md`](portable/system-prompt.md) into a custom GPT, Project or Gem, or paste [`portable/custom-instructions-short.txt`](portable/custom-instructions-short.txt) into your custom instructions
 
 Publishing to the stores and directories: see [PUBLISHING.md](PUBLISHING.md).
 

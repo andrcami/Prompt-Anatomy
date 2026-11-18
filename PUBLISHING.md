@@ -39,7 +39,8 @@ For coding agents, OpenAI Codex reads the same `SKILL.md` format, so people can 
 
 ## 3. Grok
 
-As of this writing, xAI has **no public store** for user-made Grok projects or instructions. Your options:
+Grok now supports **Skills** (Settings → Skills → New Skill), and this skill works there unchanged, as tested on 2026-11-18. As of this writing there's **no public skills store** for Grok. Your options:
+- Point people to `prompt-anatomy.zip` (attach it to a GitHub Release) and [INSTALL.md](INSTALL.md#grok).
 - Share a Grok **Project** by link, if your plan allows it.
 - Point people to `portable/` in this repo and [INSTALL.md](INSTALL.md#grok).
 Check xAI's announcements, because a store may appear.
