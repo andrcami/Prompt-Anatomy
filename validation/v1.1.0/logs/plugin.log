@@ -1,0 +1,13 @@
+Validating plugin manifest: /home/runner/work/Prompt-Anatomy/Prompt-Anatomy/plugins/prompt-anatomy/.claude-plugin/plugin.json
+
+Provides:
+
+  ❯ skills: prompt-anatomy:prompt-anatomy
+
+Plugin directory checks for /home/runner/work/Prompt-Anatomy/Prompt-Anatomy/plugins/prompt-anatomy. The plugin directory is the catalog that plugins are submitted to; this is a subset of what it runs.
+
+✔ These checks found nothing to report
+
+The directory also runs a safety scan and a policy review that this command does not.
+
+✔ Validation passed

@@ -1,0 +1,51 @@
+{
+  "passed": true,
+  "version": "1.1.0",
+  "commit": "b1d2bb650ac0a04bcc3b7edc0dfe190895221e9b",
+  "generated_at": "2026-11-18 20:01 UTC",
+  "checks": {
+    "Marketplace manifest (`claude plugin validate . --strict`)": "\u2705 pass",
+    "Plugin, directory profile (`claude plugin validate plugins/prompt-anatomy --strict --profile directory`)": "\u2705 pass",
+    "Build (`./scripts/build.sh`)": "\u2705 pass",
+    "NVIDIA SkillEvaluator Tier 1: quality **89.0/100 (B)**, 0 critical, 0 high, 3 medium, 9 low (tolerated tool error: skillspector)": "\u2705 pass",
+    "Live evals (`claude plugin eval`): **7/7 cases** pass with the skill, mean lift over no skill +0.22": "\u2705 pass"
+  },
+  "skillevaluator": {
+    "status": "incomplete",
+    "quality_score": 89.0,
+    "grade": "B",
+    "severity_counts": {
+      "critical": 0,
+      "high": 0,
+      "medium": 3,
+      "low": 9
+    },
+    "failed_validators": [],
+    "incomplete_scans": [
+      "skillspector"
+    ],
+    "validators": {
+      "Schema & Repository Governance": "passed",
+      "Semantic Version Validation": "passed",
+      "Security Scan": "incomplete",
+      "PII Scan": "passed",
+      "License Compliance": "passed",
+      "Code Risk Analysis": "passed",
+      "Secrets Detection": "passed",
+      "Code Integrity & Hygiene": "passed",
+      "Dependency Vulnerability Audit": "passed",
+      "Unicode Smuggling Detection": "passed",
+      "QUALITY": "passed",
+      "SCRIPT_LINT": "passed",
+      "Harness Compatibility": "passed"
+    }
+  },
+  "evals": {
+    "cases_passed": 7,
+    "cases_total": 7,
+    "mean_delta": 0.21904761904761902,
+    "cost_usd": 4.326863750000002,
+    "started_at": "2026-11-18T19:51:18.019Z",
+    "claude_version": "2.1.327"
+  }
+}
