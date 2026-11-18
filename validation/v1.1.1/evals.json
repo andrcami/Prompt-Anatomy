@@ -1,0 +1,1135 @@
+{
+ "schemaVersion": 1,
+ "claudeVersion": "2.1.327",
+ "startedAt": "2026-11-18T20:27:02.867Z",
+ "durationSeconds": 184,
+ "costUsd": 3.9781262999999973,
+ "partial": false,
+ "aggregates": {
+  "casesTotal": 7,
+  "casesPassed": 5,
+  "overallScore": 0.9746031746031747,
+  "overallPassRate": 0.9047619047619048,
+  "meanDelta": 0.2873015873015873
+ },
+ "cases": [
+  {
+   "name": "boat-purchase-fires",
+   "prompt": "boat purchase",
+   "runsPerCase": 3,
+   "graders": [
+    "The response asks clarifying questions rather than giving a generic boat-buying guide",
+    "The first round asks at most 4 questions",
+    "The questions are boat-specific (e.g. intended use, budget, size or type, new vs used, licence, mooring)"
+   ],
+   "arms": {
+    "with": [
+     {
+      "score": 0.6666666666666666,
+      "passed": false,
+      "graders": [
+       {
+        "name": "01-asks-questions",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "02-max-four",
+        "passed": false,
+        "explanation": "judge votes: FAIL FAIL FAIL"
+       },
+       {
+        "name": "03-boat-specific",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       }
+      ]
+     },
+     {
+      "score": 1,
+      "passed": true,
+      "graders": [
+       {
+        "name": "01-asks-questions",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "02-max-four",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "03-boat-specific",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       }
+      ]
+     },
+     {
+      "score": 1,
+      "passed": true,
+      "graders": [
+       {
+        "name": "01-asks-questions",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "02-max-four",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "03-boat-specific",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       }
+      ]
+     }
+    ],
+    "without": [
+     {
+      "score": 1,
+      "passed": true,
+      "graders": [
+       {
+        "name": "01-asks-questions",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "02-max-four",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "03-boat-specific",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       }
+      ]
+     },
+     {
+      "score": 0.6666666666666666,
+      "passed": false,
+      "graders": [
+       {
+        "name": "01-asks-questions",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "02-max-four",
+        "passed": false,
+        "explanation": "judge votes: FAIL FAIL FAIL"
+       },
+       {
+        "name": "03-boat-specific",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       }
+      ]
+     },
+     {
+      "score": 0.6666666666666666,
+      "passed": false,
+      "graders": [
+       {
+        "name": "01-asks-questions",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "02-max-four",
+        "passed": false,
+        "explanation": "judge votes: FAIL FAIL FAIL"
+       },
+       {
+        "name": "03-boat-specific",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "grok-sentiment-defaults",
+   "prompt": "I want a prompt for Grok to analyse what people on X are saying about the new Tesla model this week. Don't ask me questions, just use sensible defaults.",
+   "runsPerCase": 3,
+   "graders": [
+    "The response asks no clarifying questions before delivering the prompt",
+    "The delivered prompt instructs Grok to search X posts (and/or web) within a specific recent time window such as the last 7 days",
+    "The delivered prompt specifies a concrete output format (e.g. sentiment breakdown, themes, example posts with links)",
+    "The response recommends a Grok mode (e.g. DeepSearch, Think, X search) and lists the assumptions/defaults it used"
+   ],
+   "arms": {
+    "with": [
+     {
+      "score": 1,
+      "passed": true,
+      "graders": [
+       {
+        "name": "01-no-questions",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "02-x-search-time-window",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "03-output-format",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "04-mode-and-assumptions",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       }
+      ]
+     },
+     {
+      "score": 1,
+      "passed": true,
+      "graders": [
+       {
+        "name": "01-no-questions",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "02-x-search-time-window",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "03-output-format",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "04-mode-and-assumptions",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       }
+      ]
+     },
+     {
+      "score": 1,
+      "passed": true,
+      "graders": [
+       {
+        "name": "01-no-questions",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "02-x-search-time-window",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "03-output-format",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "04-mode-and-assumptions",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       }
+      ]
+     }
+    ],
+    "without": [
+     {
+      "score": 0.75,
+      "passed": false,
+      "graders": [
+       {
+        "name": "01-no-questions",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "02-x-search-time-window",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "03-output-format",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "04-mode-and-assumptions",
+        "passed": false,
+        "explanation": "judge votes: FAIL FAIL FAIL"
+       }
+      ]
+     },
+     {
+      "score": 0.75,
+      "passed": false,
+      "graders": [
+       {
+        "name": "01-no-questions",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "02-x-search-time-window",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "03-output-format",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "04-mode-and-assumptions",
+        "passed": false,
+        "explanation": "judge votes: FAIL FAIL FAIL"
+       }
+      ]
+     },
+     {
+      "score": 0.75,
+      "passed": false,
+      "graders": [
+       {
+        "name": "01-no-questions",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "02-x-search-time-window",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "03-output-format",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "04-mode-and-assumptions",
+        "passed": false,
+        "explanation": "judge votes: FAIL FAIL FAIL"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "improve-chatgpt-prompt",
+   "prompt": "I use ChatGPT for my bakery. Can you improve this prompt? 'You are an expert marketer. NEVER be boring. Write social media posts for my bakery.'",
+   "runsPerCase": 3,
+   "graders": [
+    "The response explicitly names weaknesses of the original prompt, including the vague task/missing specifics and the unhelpful 'NEVER be boring' rule",
+    "The response includes a rewritten, copy-ready prompt in a code block containing sections or placeholders for bakery details, platform, tone and output format",
+    "The rewritten prompt follows ChatGPT/OpenAI conventions (instructions first, ### or \"\"\" delimiters or markdown headings) rather than XML tags",
+    "The response recommends which ChatGPT model or mode to use"
+   ],
+   "arms": {
+    "with": [
+     {
+      "score": 1,
+      "passed": true,
+      "graders": [
+       {
+        "name": "01-names-weaknesses",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "02-rewritten-prompt",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "03-chatgpt-formatting",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "04-model-recommendation",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       }
+      ]
+     },
+     {
+      "score": 1,
+      "passed": true,
+      "graders": [
+       {
+        "name": "01-names-weaknesses",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "02-rewritten-prompt",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "03-chatgpt-formatting",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "04-model-recommendation",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       }
+      ]
+     },
+     {
+      "score": 1,
+      "passed": true,
+      "graders": [
+       {
+        "name": "01-names-weaknesses",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "02-rewritten-prompt",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "03-chatgpt-formatting",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "04-model-recommendation",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       }
+      ]
+     }
+    ],
+    "without": [
+     {
+      "score": 0.5,
+      "passed": false,
+      "graders": [
+       {
+        "name": "01-names-weaknesses",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "02-rewritten-prompt",
+        "passed": false,
+        "explanation": "judge votes: FAIL FAIL PASS"
+       },
+       {
+        "name": "03-chatgpt-formatting",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "04-model-recommendation",
+        "passed": false,
+        "explanation": "judge votes: FAIL FAIL FAIL"
+       }
+      ]
+     },
+     {
+      "score": 0.75,
+      "passed": false,
+      "graders": [
+       {
+        "name": "01-names-weaknesses",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "02-rewritten-prompt",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "03-chatgpt-formatting",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "04-model-recommendation",
+        "passed": false,
+        "explanation": "judge votes: FAIL FAIL FAIL"
+       }
+      ]
+     },
+     {
+      "score": 0.75,
+      "passed": false,
+      "graders": [
+       {
+        "name": "01-names-weaknesses",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "02-rewritten-prompt",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "03-chatgpt-formatting",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "04-model-recommendation",
+        "passed": false,
+        "explanation": "judge votes: FAIL FAIL FAIL"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "linkedin-prompt-delivery",
+   "prompt": "Make me a good prompt for a LinkedIn post announcing my new job as a data analyst at a logistics company. Skip the questions, use sensible defaults.",
+   "runsPerCase": 3,
+   "graders": [
+    "The response contains the refined prompt inside a fenced code block",
+    "A 'Run it on' line names a specific model (e.g. Claude Sonnet) and a mode (e.g. default chat), with a one-line reason",
+    "The sections appear in this order: prompt block, then Run it on, then assumptions, then a checkpoint question",
+    "The response ends with a checkpoint offering choices such as Run it here / Adjust first / Just the prompt, and does not write the LinkedIn post itself yet"
+   ],
+   "arms": {
+    "with": [
+     {
+      "score": 1,
+      "passed": true,
+      "graders": [
+       {
+        "name": "01-prompt-in-code-block",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "02-model-and-mode",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "03-order",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "04-checkpoint-not-run",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       }
+      ]
+     },
+     {
+      "score": 1,
+      "passed": true,
+      "graders": [
+       {
+        "name": "01-prompt-in-code-block",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "02-model-and-mode",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "03-order",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "04-checkpoint-not-run",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       }
+      ]
+     },
+     {
+      "score": 1,
+      "passed": true,
+      "graders": [
+       {
+        "name": "01-prompt-in-code-block",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "02-model-and-mode",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "03-order",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "04-checkpoint-not-run",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       }
+      ]
+     }
+    ],
+    "without": [
+     {
+      "score": 0.25,
+      "passed": false,
+      "graders": [
+       {
+        "name": "01-prompt-in-code-block",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "02-model-and-mode",
+        "passed": false,
+        "explanation": "judge votes: FAIL FAIL FAIL"
+       },
+       {
+        "name": "03-order",
+        "passed": false,
+        "explanation": "judge votes: FAIL FAIL FAIL"
+       },
+       {
+        "name": "04-checkpoint-not-run",
+        "passed": false,
+        "explanation": "judge votes: FAIL FAIL FAIL"
+       }
+      ]
+     },
+     {
+      "score": 0,
+      "passed": false,
+      "graders": [
+       {
+        "name": "01-prompt-in-code-block",
+        "passed": false,
+        "explanation": "judge votes: FAIL FAIL FAIL"
+       },
+       {
+        "name": "02-model-and-mode",
+        "passed": false,
+        "explanation": "judge votes: FAIL FAIL FAIL"
+       },
+       {
+        "name": "03-order",
+        "passed": false,
+        "explanation": "judge votes: FAIL FAIL FAIL"
+       },
+       {
+        "name": "04-checkpoint-not-run",
+        "passed": false,
+        "explanation": "judge votes: FAIL FAIL FAIL"
+       }
+      ]
+     },
+     {
+      "score": 0,
+      "passed": false,
+      "graders": [
+       {
+        "name": "01-prompt-in-code-block",
+        "passed": false,
+        "explanation": "judge votes: FAIL FAIL FAIL"
+       },
+       {
+        "name": "02-model-and-mode",
+        "passed": false,
+        "explanation": "judge votes: FAIL FAIL FAIL"
+       },
+       {
+        "name": "03-order",
+        "passed": false,
+        "explanation": "judge votes: FAIL FAIL FAIL"
+       },
+       {
+        "name": "04-checkpoint-not-run",
+        "passed": false,
+        "explanation": "judge votes: FAIL FAIL FAIL"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "specific-email-no-questions",
+   "prompt": "Write a 150-word formal email to my landlord, Mr. Borg, asking him to repair the boiler in flat 3 by Friday 20 November. It has been broken since Monday and I have a newborn at home.",
+   "runsPerCase": 3,
+   "graders": [
+    "The response contains a complete email to Mr. Borg and asks no clarifying questions before it",
+    "The email mentions flat 3, the boiler, broken since Monday, the newborn, and the Friday 20 November deadline",
+    "The email body is roughly 150 words (between 120 and 180 words)"
+   ],
+   "arms": {
+    "with": [
+     {
+      "score": 1,
+      "passed": true,
+      "graders": [
+       {
+        "name": "01-writes-email-directly",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "02-includes-details",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "03-length",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       }
+      ]
+     },
+     {
+      "score": 1,
+      "passed": true,
+      "graders": [
+       {
+        "name": "01-writes-email-directly",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "02-includes-details",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "03-length",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       }
+      ]
+     },
+     {
+      "score": 1,
+      "passed": true,
+      "graders": [
+       {
+        "name": "01-writes-email-directly",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "02-includes-details",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "03-length",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       }
+      ]
+     }
+    ],
+    "without": [
+     {
+      "score": 1,
+      "passed": true,
+      "graders": [
+       {
+        "name": "01-writes-email-directly",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "02-includes-details",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "03-length",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       }
+      ]
+     },
+     {
+      "score": 1,
+      "passed": true,
+      "graders": [
+       {
+        "name": "01-writes-email-directly",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "02-includes-details",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "03-length",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       }
+      ]
+     },
+     {
+      "score": 1,
+      "passed": true,
+      "graders": [
+       {
+        "name": "01-writes-email-directly",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS FAIL"
+       },
+       {
+        "name": "02-includes-details",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "03-length",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "vague-car-prices-malta",
+   "prompt": "find me the prices of cars in Malta",
+   "runsPerCase": 3,
+   "graders": [
+    "The response asks clarifying questions instead of presenting a list of car prices as the main content",
+    "The first round asks at most 4 questions",
+    "The questions are specific to buying/selling cars (e.g. new vs used, budget, car type, output format), not generic ('what is your context?')",
+    "Each question offers choices with a recommended or default option, and the question tool (AskUserQuestion) is used if it is available",
+    "The response does not ask which AI platform the prompt is for"
+   ],
+   "arms": {
+    "with": [
+     {
+      "score": 0.8,
+      "passed": false,
+      "graders": [
+       {
+        "name": "01-asks-before-answering",
+        "passed": false,
+        "explanation": "judge votes: FAIL FAIL FAIL"
+       },
+       {
+        "name": "02-max-four-questions",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "03-task-specific",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "04-choices-with-default",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "05-no-platform-question",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       }
+      ]
+     },
+     {
+      "score": 1,
+      "passed": true,
+      "graders": [
+       {
+        "name": "01-asks-before-answering",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "02-max-four-questions",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "03-task-specific",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "04-choices-with-default",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "05-no-platform-question",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       }
+      ]
+     },
+     {
+      "score": 1,
+      "passed": true,
+      "graders": [
+       {
+        "name": "01-asks-before-answering",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "02-max-four-questions",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "03-task-specific",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "04-choices-with-default",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "05-no-platform-question",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       }
+      ]
+     }
+    ],
+    "without": [
+     {
+      "score": 0.8,
+      "passed": false,
+      "graders": [
+       {
+        "name": "01-asks-before-answering",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "02-max-four-questions",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "03-task-specific",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "04-choices-with-default",
+        "passed": false,
+        "explanation": "judge votes: FAIL FAIL FAIL"
+       },
+       {
+        "name": "05-no-platform-question",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       }
+      ]
+     },
+     {
+      "score": 0.4,
+      "passed": false,
+      "graders": [
+       {
+        "name": "01-asks-before-answering",
+        "passed": false,
+        "explanation": "judge votes: FAIL FAIL FAIL"
+       },
+       {
+        "name": "02-max-four-questions",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "03-task-specific",
+        "passed": false,
+        "explanation": "judge votes: FAIL FAIL FAIL"
+       },
+       {
+        "name": "04-choices-with-default",
+        "passed": false,
+        "explanation": "judge votes: FAIL FAIL FAIL"
+       },
+       {
+        "name": "05-no-platform-question",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       }
+      ]
+     },
+     {
+      "score": 0.4,
+      "passed": false,
+      "graders": [
+       {
+        "name": "01-asks-before-answering",
+        "passed": false,
+        "explanation": "judge votes: FAIL FAIL FAIL"
+       },
+       {
+        "name": "02-max-four-questions",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "03-task-specific",
+        "passed": false,
+        "explanation": "judge votes: FAIL FAIL FAIL"
+       },
+       {
+        "name": "04-choices-with-default",
+        "passed": false,
+        "explanation": "judge votes: FAIL FAIL PASS"
+       },
+       {
+        "name": "05-no-platform-question",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "vat-rate-no-fire",
+   "prompt": "what's the standard VAT rate in Malta?",
+   "runsPerCase": 3,
+   "graders": [
+    "The response states the standard VAT rate in Malta (18%) directly",
+    "The response asks no clarifying questions and does not produce a refined prompt or model recommendation"
+   ],
+   "arms": {
+    "with": [
+     {
+      "score": 1,
+      "passed": true,
+      "graders": [
+       {
+        "name": "01-answers-directly",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "02-no-skill-flow",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       }
+      ]
+     },
+     {
+      "score": 1,
+      "passed": true,
+      "graders": [
+       {
+        "name": "01-answers-directly",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "02-no-skill-flow",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       }
+      ]
+     },
+     {
+      "score": 1,
+      "passed": true,
+      "graders": [
+       {
+        "name": "01-answers-directly",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "02-no-skill-flow",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       }
+      ]
+     }
+    ],
+    "without": [
+     {
+      "score": 1,
+      "passed": true,
+      "graders": [
+       {
+        "name": "01-answers-directly",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "02-no-skill-flow",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       }
+      ]
+     },
+     {
+      "score": 1,
+      "passed": true,
+      "graders": [
+       {
+        "name": "01-answers-directly",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "02-no-skill-flow",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       }
+      ]
+     },
+     {
+      "score": 1,
+      "passed": true,
+      "graders": [
+       {
+        "name": "01-answers-directly",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       },
+       {
+        "name": "02-no-skill-flow",
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
+       }
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}
