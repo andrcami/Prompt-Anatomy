@@ -4,6 +4,10 @@
 
 A skill that turns vague requests into strong prompts.
 
+![Before and after: without Prompt Anatomy, a generic price table from memory; with it, four targeted questions, then a copy-ready prompt with a model, a mode and a checkpoint](docs/before-after.gif)
+
+*Real outputs from Claude Sonnet 5.5 for "find me the prices of cars in Malta", with and without the skill.*
+
 Suppose you ask an AI something broad like *"find me the prices of cars in Malta"*. Prompt Anatomy steps in with **a few targeted questions** (at most two short rounds): buying or selling? new or used? budget? what format? Each question comes with choices and a recommended default, so you can answer in seconds. It then gives you:
 
 1. **A refined, well-structured prompt** formatted for the AI you're using (Claude, ChatGPT, Grok, Gemini and others)
