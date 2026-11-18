@@ -1,12 +1,14 @@
 name: Release
 
-# Pushing a tag like v1.1.0:
+# Start it by pushing a tag like v1.1.0, or from the Actions tab ("Run workflow"),
+# which releases the version in plugin.json and creates its tag. Either way it:
 #   1. runs the full validation (validate.yml); the release stops if it fails,
 #   2. builds dist/prompt-anatomy.zip and publishes a GitHub Release with the zip and the validation report,
 #   3. commits the validation report to main under validation/<tag>/ as a permanent record.
 on:
   push:
     tags: ["v*"]
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -24,12 +26,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Check the tag matches plugin.json
+      - name: Work out the tag
         run: |
           want="v$(jq -r .version plugins/prompt-anatomy/.claude-plugin/plugin.json)"
-          if [ "$want" != "$GITHUB_REF_NAME" ]; then
-            echo "Tag $GITHUB_REF_NAME does not match plugin.json version ($want)"; exit 1
+          if [ "$GITHUB_REF_TYPE" = "tag" ]; then tag="$GITHUB_REF_NAME"; else tag="$want"; fi
+          if [ "$tag" != "$want" ]; then
+            echo "Tag $tag does not match plugin.json version ($want)"; exit 1
           fi
+          if gh release view "$tag" >/dev/null 2>&1; then echo "Release $tag already exists"; exit 1; fi
+          echo "TAG=$tag" >> "$GITHUB_ENV"
+        env:
+          GH_TOKEN: ${{ github.token }}
 
       - uses: actions/download-artifact@v4
         with:
@@ -46,18 +53,18 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          notes=".github/release-notes/${GITHUB_REF_NAME}.md"
+          notes=".github/release-notes/${TAG}.md"
           if [ -f "$notes" ]; then set -- --notes-file "$notes"; else set -- --generate-notes; fi
-          gh release create "$GITHUB_REF_NAME" dist/prompt-anatomy.zip dist/validation-report.zip dist/validation-summary.md \
-            --title "Prompt Anatomy $GITHUB_REF_NAME" "$@"
+          gh release create "$TAG" dist/prompt-anatomy.zip dist/validation-report.zip dist/validation-summary.md \
+            --target "$GITHUB_SHA" --title "Prompt Anatomy $TAG" "$@"
 
       - name: Commit the validation report to main
         run: |
           git fetch origin main && git checkout -B main origin/main
-          rm -rf "validation/$GITHUB_REF_NAME" && mkdir -p "validation/$GITHUB_REF_NAME"
-          cp -R validation-report/. "validation/$GITHUB_REF_NAME/"
-          cp "validation/$GITHUB_REF_NAME/status.json" validation/latest-status.json
+          rm -rf "validation/$TAG" && mkdir -p "validation/$TAG"
+          cp -R validation-report/. "validation/$TAG/"
+          cp "validation/$TAG/status.json" validation/latest-status.json
           git config user.name "github-actions[bot]"
           git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
           git add validation
-          git commit -m "Validation report for $GITHUB_REF_NAME" && git push origin main || echo "Nothing to commit"
+          git commit -m "Validation report for $TAG" && git push origin main || echo "Nothing to commit"
