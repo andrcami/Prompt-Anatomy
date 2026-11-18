@@ -1,3 +1,4 @@
 dist/
 *-workspace/
 .DS_Store
+plugins/*/evals/results/

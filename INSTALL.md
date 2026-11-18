@@ -16,7 +16,7 @@ Prompt Anatomy is a **skill**, not a connector. Connectors link an AI to outside
 ## Claude (web, desktop and mobile)
 
 **Option A: upload the skill**
-1. Download `prompt-anatomy.zip` from the [latest release](https://github.com/andrcami/prompt-anatomy/releases), or build it yourself with `./scripts/build.sh` (it lands in `dist/`).
+1. Download **[prompt-anatomy.zip](https://github.com/andrcami/prompt-anatomy/releases/latest/download/prompt-anatomy.zip)** from the [latest release](https://github.com/andrcami/prompt-anatomy/releases/latest), or build it yourself with `./scripts/build.sh` (it lands in `dist/`).
 2. In Claude, open **Settings → Capabilities** and make sure **Skills** is turned on. On Team or Enterprise plans, an admin may need to allow skills first.
 3. Click **Upload skill** and choose `prompt-anatomy.zip`.
 4. It now appears in your skills list, where you can switch it on and off.
