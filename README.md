@@ -84,6 +84,10 @@ claude plugin eval plugins/prompt-anatomy
 
 The skill collects, stores and sends no data. See [plugins/prompt-anatomy/PRIVACY.md](plugins/prompt-anatomy/PRIVACY.md).
 
+## Contributing
+
+Issues and pull requests are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) first, and follow the [Code of Conduct](CODE_OF_CONDUCT.md).
+
 ## License
 
 [MIT](LICENSE) © 2026 andrcami. You're free to use, modify and share this skill, including commercially, as long as the copyright and licence notice stays with every copy or modified version.

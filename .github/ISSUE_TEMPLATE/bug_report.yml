@@ -1,0 +1,36 @@
+name: Bug report
+description: Prompt Anatomy did something it shouldn't, or didn't do something it should
+labels: [bug]
+body:
+  - type: textarea
+    id: request
+    attributes:
+      label: What you asked
+      description: The request you gave the AI. Remove anything private.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: What happened
+      description: For example, it asked questions when it shouldn't have, asked too many, or recommended a model that doesn't exist.
+    validations:
+      required: true
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Where you used it
+      options: [Claude (web, desktop or mobile), Claude Code, ChatGPT, Grok, Gemini, Other]
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: From plugin.json or the release you installed

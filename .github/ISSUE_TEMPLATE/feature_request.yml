@@ -1,0 +1,22 @@
+name: Idea or improvement
+description: Suggest a better question, a new task type, a platform, or another improvement
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: The problem
+      description: What kind of request does Prompt Anatomy handle badly today?
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: Your idea
+    validations:
+      required: true
+  - type: textarea
+    id: example
+    attributes:
+      label: An example
+      description: A before/after request, if you have one. Use invented details.
