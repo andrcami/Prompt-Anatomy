@@ -1,16 +1,16 @@
 {
  "schemaVersion": 1,
  "claudeVersion": "2.1.327",
- "startedAt": "2026-11-18T19:51:18.019Z",
- "durationSeconds": 186,
- "costUsd": 4.326863750000002,
+ "startedAt": "2026-11-18T20:27:02.867Z",
+ "durationSeconds": 184,
+ "costUsd": 3.9781262999999973,
  "partial": false,
  "aggregates": {
   "casesTotal": 7,
-  "casesPassed": 7,
-  "overallScore": 1,
-  "overallPassRate": 1,
-  "meanDelta": 0.21904761904761902
+  "casesPassed": 5,
+  "overallScore": 0.9746031746031747,
+  "overallPassRate": 0.9047619047619048,
+  "meanDelta": 0.2873015873015873
  },
  "cases": [
   {
@@ -25,8 +25,8 @@
    "arms": {
     "with": [
      {
-      "score": 1,
-      "passed": true,
+      "score": 0.6666666666666666,
+      "passed": false,
       "graders": [
        {
         "name": "01-asks-questions",
@@ -35,8 +35,8 @@
        },
        {
         "name": "02-max-four",
-        "passed": true,
-        "explanation": "judge votes: PASS PASS PASS"
+        "passed": false,
+        "explanation": "judge votes: FAIL FAIL FAIL"
        },
        {
         "name": "03-boat-specific",
@@ -111,8 +111,8 @@
       ]
      },
      {
-      "score": 1,
-      "passed": true,
+      "score": 0.6666666666666666,
+      "passed": false,
       "graders": [
        {
         "name": "01-asks-questions",
@@ -121,8 +121,8 @@
        },
        {
         "name": "02-max-four",
-        "passed": true,
-        "explanation": "judge votes: PASS PASS PASS"
+        "passed": false,
+        "explanation": "judge votes: FAIL FAIL FAIL"
        },
        {
         "name": "03-boat-specific",
@@ -132,8 +132,8 @@
       ]
      },
      {
-      "score": 1,
-      "passed": true,
+      "score": 0.6666666666666666,
+      "passed": false,
       "graders": [
        {
         "name": "01-asks-questions",
@@ -142,8 +142,8 @@
        },
        {
         "name": "02-max-four",
-        "passed": true,
-        "explanation": "judge votes: PASS PASS PASS"
+        "passed": false,
+        "explanation": "judge votes: FAIL FAIL FAIL"
        },
        {
         "name": "03-boat-specific",
@@ -431,13 +431,13 @@
        },
        {
         "name": "02-rewritten-prompt",
-        "passed": true,
-        "explanation": "judge votes: PASS PASS PASS"
+        "passed": false,
+        "explanation": "judge votes: FAIL FAIL PASS"
        },
        {
         "name": "03-chatgpt-formatting",
-        "passed": false,
-        "explanation": "judge votes: PASS FAIL FAIL"
+        "passed": true,
+        "explanation": "judge votes: PASS PASS PASS"
        },
        {
         "name": "04-model-recommendation",
@@ -620,13 +620,13 @@
       ]
      },
      {
-      "score": 0.25,
+      "score": 0,
       "passed": false,
       "graders": [
        {
         "name": "01-prompt-in-code-block",
-        "passed": true,
-        "explanation": "judge votes: PASS PASS PASS"
+        "passed": false,
+        "explanation": "judge votes: FAIL FAIL FAIL"
        },
        {
         "name": "02-model-and-mode",
@@ -646,13 +646,13 @@
       ]
      },
      {
-      "score": 0.25,
+      "score": 0,
       "passed": false,
       "graders": [
        {
         "name": "01-prompt-in-code-block",
-        "passed": true,
-        "explanation": "judge votes: PASS PASS PASS"
+        "passed": false,
+        "explanation": "judge votes: FAIL FAIL FAIL"
        },
        {
         "name": "02-model-and-mode",
@@ -799,7 +799,7 @@
        {
         "name": "01-writes-email-directly",
         "passed": true,
-        "explanation": "judge votes: PASS PASS PASS"
+        "explanation": "judge votes: PASS PASS FAIL"
        },
        {
         "name": "02-includes-details",
@@ -830,13 +830,13 @@
    "arms": {
     "with": [
      {
-      "score": 1,
-      "passed": true,
+      "score": 0.8,
+      "passed": false,
       "graders": [
        {
         "name": "01-asks-before-answering",
-        "passed": true,
-        "explanation": "judge votes: PASS PASS PASS"
+        "passed": false,
+        "explanation": "judge votes: FAIL FAIL FAIL"
        },
        {
         "name": "02-max-four-questions",
@@ -956,13 +956,13 @@
       ]
      },
      {
-      "score": 0.8,
+      "score": 0.4,
       "passed": false,
       "graders": [
        {
         "name": "01-asks-before-answering",
-        "passed": true,
-        "explanation": "judge votes: PASS PASS PASS"
+        "passed": false,
+        "explanation": "judge votes: FAIL FAIL FAIL"
        },
        {
         "name": "02-max-four-questions",
@@ -971,8 +971,8 @@
        },
        {
         "name": "03-task-specific",
-        "passed": true,
-        "explanation": "judge votes: PASS PASS PASS"
+        "passed": false,
+        "explanation": "judge votes: FAIL FAIL FAIL"
        },
        {
         "name": "04-choices-with-default",
@@ -987,13 +987,13 @@
       ]
      },
      {
-      "score": 0.8,
+      "score": 0.4,
       "passed": false,
       "graders": [
        {
         "name": "01-asks-before-answering",
-        "passed": true,
-        "explanation": "judge votes: PASS PASS PASS"
+        "passed": false,
+        "explanation": "judge votes: FAIL FAIL FAIL"
        },
        {
         "name": "02-max-four-questions",
@@ -1002,13 +1002,13 @@
        },
        {
         "name": "03-task-specific",
-        "passed": true,
-        "explanation": "judge votes: PASS FAIL PASS"
+        "passed": false,
+        "explanation": "judge votes: FAIL FAIL FAIL"
        },
        {
         "name": "04-choices-with-default",
         "passed": false,
-        "explanation": "judge votes: PASS FAIL FAIL"
+        "explanation": "judge votes: FAIL FAIL PASS"
        },
        {
         "name": "05-no-platform-question",

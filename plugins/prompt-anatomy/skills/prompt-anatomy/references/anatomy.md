@@ -1,6 +1,6 @@
 # The Anatomy of a Prompt: Deep Guide and Question Banks
 
-Read this file when you need more than the summary table in SKILL.md: when the task type is unfamiliar, when you're building a reusable or system prompt, or when the user wants to learn *why* each element matters.
+Read this file when you need more than the short list in SKILL.md: when the task type is unfamiliar, when you're building a reusable or system prompt, or when the user wants to learn *why* each element matters.
 
 ## Contents
 1. The elements in depth
@@ -8,10 +8,26 @@ Read this file when you need more than the summary table in SKILL.md: when the t
 3. Question banks by task type
 4. Choosing which questions to ask
 5. Prompt skeletons
+6. Question message format (when there is no question tool)
 
 ---
 
 ## 1. The elements in depth
+
+Summary table (the example questions are for the car-prices request):
+
+| # | Element | What it pins down | Example question |
+|---|---------|-------------------|------------------|
+| 1 | **Goal** | What they want and what decision or action it serves | "Are you buying, selling, or researching the market?" |
+| 2 | **Context** | Who they are, background, what they already know or tried | "Is this for you personally or for a business?" |
+| 3 | **Specifics / inputs** | Scope: place, time, budget, quantities, data they have | "New or used? Rough budget?" |
+| 4 | **Role / audience** | Expert lens for the model; who will read the output | "Should this read like advice from a car dealer or a consumer advocate?" |
+| 5 | **Constraints** | Must and must-not rules, sources, tone, length, deadline | "Only trusted sources, or include private classifieds?" |
+| 6 | **Output format** | Table, bullets, email, JSON, code; length | "A comparison table with price, year, mileage and link?" |
+| 7 | **Examples** | A sample of what good looks like (optional, but powerful) | "Have an example you liked?" |
+| 8 | **Success criteria** | How they'll judge the result; what "done" means | "What would make this answer genuinely useful to you?" |
+
+Not every prompt needs all eight. A one-off question may need four, and a system prompt for a custom GPT needs nearly all of them.
 
 ### Goal
 What the user wants and **what they'll do with it**. The second half matters most. "Car prices" for a buyer needs listings and negotiation tips. For a seller it needs valuations. For an analyst it needs averages and trends. Ask about the decision or action the answer will support.
@@ -175,3 +191,25 @@ If anything important is unclear or unavailable, say so.
 # Handling uncertainty, off-topic and sensitive requests
 # Examples
 ```
+
+---
+
+## 6. Question message format (when there is no question tool)
+
+Use the structured question tool when one exists (SKILL.md Step 2). Without one, use this shape. The same limits apply: at most 4 numbered items in round 1, one topic each, and every item counts, including an "Output" item that only states a default.
+
+```
+To get you a genuinely useful answer, a few quick questions. Reply with numbers/letters, or just say "defaults":
+
+1. **[Element]: [Specific question]?**
+   a) … (default)  b) …  c) …
+2. **[Element]: [Specific question]?**
+   a) … (default)  b) …
+…
+You can skip any of these.
+```
+
+- Put the recommended default first, and mark it.
+- Add a platform question ("Where will you use this prompt?") only when the platform isn't obvious. Inside Claude or Grok it is obvious.
+- If a 5th thing matters, state its default in one line under the list ("I'll assume prices in EUR"), or ask it in round 2.
+- Don't explain the anatomy unless the user asks.

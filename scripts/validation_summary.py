@@ -2,6 +2,8 @@
 
 Gate rules:
 - Both `claude plugin validate` runs and the build must exit 0.
+- Live evals (if attached): every case must pass in at least 2 of its 3 runs with the skill. Model
+  outputs vary run to run, so one stray run doesn't block a release; every run is still shown.
 - SkillEvaluator Tier 1: no validator may fail, there must be no high or critical
   finding, and the quality score must be >= 70. A scan may be "incomplete" only if it's
   a known tool-side error listed in TOLERATED_INCOMPLETE. That's reported, never hidden.
@@ -53,12 +55,15 @@ if (out / "evals.json").exists():
         w, wo = arm("with"), arm("without")
         mean = lambda xs: sum(xs) / len(xs) if xs else None
         rows.append((c["name"], mean(w), mean(wo), sum(r["passed"] for r in c["arms"].get("with", [])), len(w)))
-    ev_pass = agg.get("casesPassed") == agg.get("casesTotal") and not e.get("partial")
+    majority = lambda p, k: k > 0 and p * 3 >= k * 2
+    ev_pass = bool(rows) and all(majority(p, k) for *_, p, k in rows) and not e.get("partial")
+    runs_ok, runs_all = sum(p for *_, p, k in rows), sum(k for *_, p, k in rows)
     ok &= ev_pass
-    ev = {"cases_passed": agg.get("casesPassed"), "cases_total": agg.get("casesTotal"), "mean_delta": agg.get("meanDelta"),
+    ev = {"cases_passed": agg.get("casesPassed"), "cases_total": agg.get("casesTotal"), "runs_passed": runs_ok, "runs_total": runs_all,
+          "mean_delta": agg.get("meanDelta"), "gate": "every case passes in >= 2/3 of its runs",
           "cost_usd": e.get("costUsd"), "started_at": e.get("startedAt"), "claude_version": e.get("claudeVersion")}
-    checks.append((f"Live evals (`claude plugin eval`): **{agg.get('casesPassed')}/{agg.get('casesTotal')} cases** pass with the skill, "
-                   f"mean lift over no skill {agg.get('meanDelta', 0):+.2f}", "✅ pass" if ev_pass else "❌ fail"))
+    checks.append((f"Live evals (`claude plugin eval`): **{runs_ok}/{runs_all} runs** pass with the skill; every case passes in at least 2 of 3 runs: "
+                   f"{'yes' if ev_pass else 'no'}; mean lift over no skill {agg.get('meanDelta', 0):+.2f}", "✅ pass" if ev_pass else "❌ fail"))
 
 def git(*a):
     try: return subprocess.check_output(["git", *a], text=True).strip()

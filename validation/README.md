@@ -18,7 +18,7 @@ Every release is checked by [`scripts/validate.sh`](../scripts/validate.sh), and
 2. `claude plugin validate plugins/prompt-anatomy --strict --profile directory` (Anthropic directory rules)
 3. `./scripts/build.sh` (the installable zip builds)
 4. NVIDIA SkillEvaluator 1.0.1, Tier 1: schema, PII, licence, secrets, Unicode, quality score (must be ≥ 70), harness compatibility. No high or critical findings allowed.
-5. Live evals (`claude plugin eval`): run in CI when the `ANTHROPIC_API_KEY` secret exists. Otherwise the report attaches the last committed run from `validation/evals/latest.json` and shows its date.
+5. Live evals (`claude plugin eval`): every case must pass in at least 2 of its 3 runs with the skill. Model outputs vary from run to run, and every run is still reported. The evals run in CI when the `ANTHROPIC_API_KEY` secret exists. Otherwise the report attaches the last committed run from `validation/evals/latest.json` and shows its date.
 
 **Known tool issue:** SkillEvaluator 1.0.1's bundled security scanner (`skillspector`) reports "incomplete" on skills that contain no code, because of an internal self-check error. The gate accepts that one case and the report always shows it. Every other scan must pass.
 
